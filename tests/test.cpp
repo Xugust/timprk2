@@ -1,4 +1,4 @@
-#include "catch2/catch.hpp"
+
 #include "Circle.h"
 #include "Square.h"
 #include "Shape.h"
