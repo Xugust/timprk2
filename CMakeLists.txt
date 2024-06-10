@@ -18,4 +18,6 @@ set(SOURCES
 # Add executable
 add_executable(SmallBufferOptimization ${SOURCES})
 
+enable_testing()
 
+add_subdirectory(tests)
