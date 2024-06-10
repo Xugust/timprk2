@@ -81,12 +81,12 @@ clean: CMakeFiles/SmallBufferOptimization.dir/clean
 CMakeFiles/SmallBufferOptimization.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/build/CMakeFiles --progress-num=1,2,3 "Built target SmallBufferOptimization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/build/CMakeFiles --progress-num=1,2 "Built target SmallBufferOptimization"
 .PHONY : CMakeFiles/SmallBufferOptimization.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SmallBufferOptimization.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SmallBufferOptimization.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/build/CMakeFiles 0
 .PHONY : CMakeFiles/SmallBufferOptimization.dir/rule

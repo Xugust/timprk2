@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SmallBufferOptimization.dir/G33_Small_Buffer_Optimization.cpp.o"
-  "CMakeFiles/SmallBufferOptimization.dir/G33_Small_Buffer_Optimization.cpp.o.d"
   "CMakeFiles/SmallBufferOptimization.dir/Main.cpp.o"
   "CMakeFiles/SmallBufferOptimization.dir/Main.cpp.o.d"
   "SmallBufferOptimization"
