@@ -12,7 +12,7 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 # Add source files
 set(SOURCES
-    G33_Small_Buffer_Optimization.cpp
+    Main.cpp
 )
 
 # Add executable
