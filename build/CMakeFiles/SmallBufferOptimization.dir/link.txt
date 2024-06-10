@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/SmallBufferOptimization.dir/Main.cpp.o CMakeFiles/SmallBufferOptimization.dir/G33_Small_Buffer_Optimization.cpp.o -o SmallBufferOptimization 
