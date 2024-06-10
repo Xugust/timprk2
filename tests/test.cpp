@@ -1,40 +1,27 @@
+#define CATCH_CONFIG_MAIN
+#include <catch2/catch.hpp>
+#include "Buffer.h"
 
-#include "Circle.h"
-#include "Square.h"
-#include "Shape.h"
+TEST_CASE("Buffer class tests", "[Buffer]") {
+    SECTION("Default constructor") {
+        Buffer<int> buffer;
+        REQUIRE(buffer.size() == 0);
+        REQUIRE(buffer.capacity() == Buffer<int>::small_capacity);
+    }
 
-#include <cstdlib>
+    SECTION("Parameterized constructor") {
+        Buffer<int> buffer(10);
+        REQUIRE(buffer.size() == 0);
+        REQUIRE(buffer.capacity() == 10);
+    }
 
-TEST_CASE("Shape constructor") {
-    Circle circle{3.14};
-    auto drawer = [](Circle const& c) { /*...*/ };
-    Shape shape(circle, drawer);
-
-    REQUIRE(shape.get_radius() == 3.14);
-    REQUIRE(shape.get_area() == Approx(3.14 * 3.14));
-}
-
-TEST_CASE("Shape copy constructor") {
-    Circle circle{3.14};
-    auto drawer = [](Circle const& c) { /*...*/ };
-    Shape shape1(circle, drawer);
-    Shape shape2(shape1);
-
-    REQUIRE(shape2.get_radius() == 3.14);
-    REQUIRE(shape2.get_area() == Approx(3.14 * 3.14));
-}
-
-TEST_CASE("draw function") {
-    Circle circle{3.14};
-    auto drawer = [](Circle const& c) { /*...*/ };
-    Shape shape(circle, drawer);
-
-    bool was_called = false;
-    auto mock_drawer = [&was_called](Circle const& c) { was_called = true; };
-
-    draw(shape, mock_drawer);
-
-    REQUIRE(was_called);
+    SECTION("Append and size") {
+        Buffer<int> buffer;
+        buffer.append(1);
+        buffer.append(2);
+        buffer.append(3);
+        REQUIRE(buffer.size() == 3);
+    }
 }
 
 int main()
