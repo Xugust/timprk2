@@ -1,10 +1,7 @@
-CMakeFiles/SmallBufferOptimization.dir/Main.cpp.o: \
- /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/Main.cpp \
- /usr/include/stdc-predef.h \
- /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/Circle.h \
- /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/Square.h \
- /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/Shape.h \
- /usr/include/c++/11/array /usr/include/c++/11/utility \
+CMakeFiles/SmallBufferOptimization.dir/G33_Small_Buffer_Optimization.cpp.o: \
+ /home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization/G33_Small_Buffer_Optimization.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/11/array \
+ /usr/include/c++/11/utility \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \

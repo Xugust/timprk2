@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/kaworu/Cpp-Software-Design/guidelines/Guideline_33__Be_Aware_of_the_Optimization_Potential_of_Type_Erasure/Small_Buffer_Optimization
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS = -std=gnu++23
 
