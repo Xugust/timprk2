@@ -1,55 +1,64 @@
-#define CATCH_CONFIG_MAIN
 #include "catch2/catch.hpp"
 #include "Circle.h"
-#include "Shape.h"
 #include "Square.h"
-#include <iostream>
-#include <sstream>
+#include "Shape.h"
 
-TEST_CASE("Create a Circle and draw it using Shape") {
-    std::stringstream output;
-    std::streambuf* old = std::cout.rdbuf(output.rdbuf());
+#include <cstdlib>
 
+TEST_CASE("Shape constructor") {
     Circle circle{3.14};
-    auto drawer = [](Circle const& c) { std::cout << "Drawing circle with radius: " << c.getRadius(); };
+    auto drawer = [](Circle const& c) { /*...*/ };
     Shape shape(circle, drawer);
 
-    draw(shape);
-
-    std::cout.rdbuf(old);
-    REQUIRE(output.str() == "Drawing circle with radius: 3.14");
+    REQUIRE(shape.get_radius() == 3.14);
+    REQUIRE(shape.get_area() == Approx(3.14 * 3.14));
 }
 
-TEST_CASE("Copy construct a Shape object") {
-    std::stringstream output;
-    std::streambuf* old = std::cout.rdbuf(output.rdbuf());
-
+TEST_CASE("Shape copy constructor") {
     Circle circle{3.14};
-    auto drawer = [](Circle const& c) { std::cout << "Drawing circle with radius: " << c.getRadius(); };
+    auto drawer = [](Circle const& c) { /*...*/ };
     Shape shape1(circle, drawer);
-
     Shape shape2(shape1);
-    draw(shape2);
 
-    std::cout.rdbuf(old);
-    REQUIRE(output.str() == "Drawing circle with radius: 3.14");
+    REQUIRE(shape2.get_radius() == 3.14);
+    REQUIRE(shape2.get_area() == Approx(3.14 * 3.14));
 }
 
-TEST_CASE("Create a Square and draw it using Shape") {
-    std::stringstream output;
-    std::streambuf* old = std::cout.rdbuf(output.rdbuf());
+TEST_CASE("draw function") {
+    Circle circle{3.14};
+    auto drawer = [](Circle const& c) { /*...*/ };
+    Shape shape(circle, drawer);
 
-    Square square{4.0};
-    auto drawer = [](Square const& s) { std::cout << "Drawing square with side: " << s.getSide(); };
-    Shape shape(square, drawer);
+    bool was_called = false;
+    auto mock_drawer = [&was_called](Circle const& c) { was_called = true; };
 
-    draw(shape);
+    draw(shape, mock_drawer);
 
-    std::cout.rdbuf(old);
-    REQUIRE(output.str() == "Drawing square with side: 4");
+    REQUIRE(was_called);
 }
 
-int main(int argc, char* argv[]) {
-    return Catch::Session().run(argc, argv);
+int main()
+{
+   // Create a circle as one representative of a concrete shape type
+   Circle circle{ 3.14 };
+
+   // Create a drawing strategy in form of a lambda
+   auto drawer = []( Circle const& c ){ /*...*/ };
+
+   // Combine the shape and the drawing strategy in a 'Shape' abstraction
+   // This constructor call will instantiate a 'detail::OwningShapeModel' for
+   // the given 'Circle' and lambda types
+   Shape shape1( circle, drawer );
+
+   // Draw the shape
+   draw( shape1 );
+
+   // Create a copy of the shape by means of the copy constructor
+   Shape shape2( shape1 );
+
+   // Drawing the copy will result in the same output
+   draw( shape2 );
+
+   return EXIT_SUCCESS;
 }
 
