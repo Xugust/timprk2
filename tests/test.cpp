@@ -1,27 +1,38 @@
-#define CATCH_CONFIG_MAIN
-#include <catch2/catch.hpp>
-#include "Buffer.h"
+#include "catch2/catch.hpp"
+#include "Circle.h"
+#include "Square.h"
+#include "Shape.h"
 
-TEST_CASE("Buffer class tests", "[Buffer]") {
-    SECTION("Default constructor") {
-        Buffer<int> buffer;
-        REQUIRE(buffer.size() == 0);
-        REQUIRE(buffer.capacity() == Buffer<int>::small_capacity);
-    }
+TEST_CASE("Shape constructor") {
+    Circle circle{3.14};
+    auto drawer = [](Circle const& c) { /*...*/ };
+    Shape<> shape(circle, drawer);
 
-    SECTION("Parameterized constructor") {
-        Buffer<int> buffer(10);
-        REQUIRE(buffer.size() == 0);
-        REQUIRE(buffer.capacity() == 10);
-    }
+    REQUIRE(shape.get_radius() == 3.14);
+    REQUIRE(shape.get_area() == Approx(3.14 * 3.14));
+}
 
-    SECTION("Append and size") {
-        Buffer<int> buffer;
-        buffer.append(1);
-        buffer.append(2);
-        buffer.append(3);
-        REQUIRE(buffer.size() == 3);
-    }
+TEST_CASE("Shape copy constructor") {
+    Circle circle{3.14};
+    auto drawer = [](Circle const& c) { /*...*/ };
+    Shape<> shape1(circle, drawer);
+    Shape<> shape2(shape1);
+
+    REQUIRE(shape2.get_radius() == 3.14);
+    REQUIRE(shape2.get_area() == Approx(3.14 * 3.14));
+}
+
+TEST_CASE("draw function") {
+    Circle circle{3.14};
+    auto drawer = [](Circle const& c) { /*...*/ };
+    Shape<> shape(circle, drawer);
+
+    bool was_called = false;
+    auto mock_drawer = [&was_called](Circle const& c) { was_called = true; };
+
+    draw(shape, mock_drawer);
+
+    REQUIRE(was_called);
 }
 
 int main()
@@ -35,13 +46,13 @@ int main()
    // Combine the shape and the drawing strategy in a 'Shape' abstraction
    // This constructor call will instantiate a 'detail::OwningShapeModel' for
    // the given 'Circle' and lambda types
-   Shape shape1( circle, drawer );
+   Shape<> shape1( circle, drawer );
 
    // Draw the shape
    draw( shape1 );
 
    // Create a copy of the shape by means of the copy constructor
-   Shape shape2( shape1 );
+   Shape<> shape2( shape1 );
 
    // Drawing the copy will result in the same output
    draw( shape2 );
