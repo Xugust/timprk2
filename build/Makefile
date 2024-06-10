@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named SmallBufferOptimization
+# Target rules for targets named Singleton
 
 # Build rule for target.
-SmallBufferOptimization: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SmallBufferOptimization
-.PHONY : SmallBufferOptimization
+Singleton: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Singleton
+.PHONY : Singleton
 
 # fast build rule for target.
-SmallBufferOptimization/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/build
-.PHONY : SmallBufferOptimization/fast
+Singleton/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Singleton.dir/build.make CMakeFiles/Singleton.dir/build
+.PHONY : Singleton/fast
 
 G33_Small_Buffer_Optimization.o: G33_Small_Buffer_Optimization.cpp.o
 .PHONY : G33_Small_Buffer_Optimization.o
 
 # target to build an object file
 G33_Small_Buffer_Optimization.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/G33_Small_Buffer_Optimization.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Singleton.dir/build.make CMakeFiles/Singleton.dir/G33_Small_Buffer_Optimization.cpp.o
 .PHONY : G33_Small_Buffer_Optimization.cpp.o
 
 G33_Small_Buffer_Optimization.i: G33_Small_Buffer_Optimization.cpp.i
@@ -142,7 +142,7 @@ G33_Small_Buffer_Optimization.i: G33_Small_Buffer_Optimization.cpp.i
 
 # target to preprocess a source file
 G33_Small_Buffer_Optimization.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/G33_Small_Buffer_Optimization.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Singleton.dir/build.make CMakeFiles/Singleton.dir/G33_Small_Buffer_Optimization.cpp.i
 .PHONY : G33_Small_Buffer_Optimization.cpp.i
 
 G33_Small_Buffer_Optimization.s: G33_Small_Buffer_Optimization.cpp.s
@@ -150,7 +150,7 @@ G33_Small_Buffer_Optimization.s: G33_Small_Buffer_Optimization.cpp.s
 
 # target to generate assembly for a file
 G33_Small_Buffer_Optimization.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/G33_Small_Buffer_Optimization.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Singleton.dir/build.make CMakeFiles/Singleton.dir/G33_Small_Buffer_Optimization.cpp.s
 .PHONY : G33_Small_Buffer_Optimization.cpp.s
 
 Main.o: Main.cpp.o
@@ -158,7 +158,7 @@ Main.o: Main.cpp.o
 
 # target to build an object file
 Main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/Main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Singleton.dir/build.make CMakeFiles/Singleton.dir/Main.cpp.o
 .PHONY : Main.cpp.o
 
 Main.i: Main.cpp.i
@@ -166,7 +166,7 @@ Main.i: Main.cpp.i
 
 # target to preprocess a source file
 Main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/Main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Singleton.dir/build.make CMakeFiles/Singleton.dir/Main.cpp.i
 .PHONY : Main.cpp.i
 
 Main.s: Main.cpp.s
@@ -174,7 +174,7 @@ Main.s: Main.cpp.s
 
 # target to generate assembly for a file
 Main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SmallBufferOptimization.dir/build.make CMakeFiles/SmallBufferOptimization.dir/Main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Singleton.dir/build.make CMakeFiles/Singleton.dir/Main.cpp.s
 .PHONY : Main.cpp.s
 
 # Help Target
@@ -185,7 +185,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... SmallBufferOptimization"
+	@echo "... Singleton"
 	@echo "... G33_Small_Buffer_Optimization.o"
 	@echo "... G33_Small_Buffer_Optimization.i"
 	@echo "... G33_Small_Buffer_Optimization.s"

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Singleton.dir/Main.cpp.o CMakeFiles/Singleton.dir/G33_Small_Buffer_Optimization.cpp.o -o Singleton 
