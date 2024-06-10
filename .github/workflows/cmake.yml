@@ -35,10 +35,9 @@ jobs:
       shell: bash
       run: ctest -C $BUILD_TYPE
       
-- name: Upload Build Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-artifacts
-        path: ${{runner.workspace}}/build
-      
+    - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+      	  name: build-artifacts
+          path: ${{runner.workspace}}/build
 
