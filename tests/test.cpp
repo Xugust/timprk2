@@ -1,62 +1,70 @@
-#include "catch2/catch.hpp"
-#include "Circle.h"
-#include "Square.h"
-#include "Shape.h"
+#include <gtest/gtest.h>
+#include <memory>
 
-TEST_CASE("Shape constructor") {
-    Circle circle{3.14};
-    auto drawer = [](Circle const& c) { /*...*/ };
-    Shape<> shape(circle, drawer);
+#include <Shape.h>
+#include <Circle.h>
+#include <Square.h>
 
-    REQUIRE(shape.get_radius() == 3.14);
-    REQUIRE(shape.get_area() == Approx(3.14 * 3.14));
+TEST(Shape, Small)
+{
+   auto circle   = Circle(1.0);
+   auto square   = Square(2.0);
+   auto circle_2 = Circle(3.0);
+
+   {
+      Shape shape( circle, [](Circle const& c){ std::cout << "Drawing circle of radius " << c.radius() << "n"; } );
+      draw(shape);
+   }
+
+   {
+      Shape shape( square, [](Square const& s){ std::cout << "Drawing square of side length " << s.side() << "n"; } );
+      draw(shape);
+   }
+
+   {
+      Shape shape( circle_2, [](Circle const& c){ std::cout << "Drawing circle of radius " << c.radius() << "n"; } );
+      draw(shape);
+   }
 }
 
-TEST_CASE("Shape copy constructor") {
-    Circle circle{3.14};
-    auto drawer = [](Circle const& c) { /*...*/ };
-    Shape<> shape1(circle, drawer);
-    Shape<> shape2(shape1);
+TEST(Shape, SmallCopy)
+{
+   auto circle   = Circle(1.0);
+   auto circle_2 = Circle(3.0);
 
-    REQUIRE(shape2.get_radius() == 3.14);
-    REQUIRE(shape2.get_area() == Approx(3.14 * 3.14));
+   {
+      Shape s{circle, [](Circle const&){}};
+      Shape s_copy{s};
+      draw(s_copy);
+   }
+   {
+      Shape s{circle_2, [](Circle const&){}};
+      Shape s_copy{s};
+      draw(s_copy);
+   }
 }
 
-TEST_CASE("draw function") {
-    Circle circle{3.14};
-    auto drawer = [](Circle const& c) { /*...*/ };
-    Shape<> shape(circle, drawer);
+TEST(Shape, SmallMove)
+{
+   auto circle   = Circle(1.0);
+   auto circle_2 = Circle(3.0);
 
-    bool was_called = false;
-    auto mock_drawer = [&was_called](Circle const& c) { was_called = true; };
+   {
+      Shape s{circle, [](Circle const&){}};
+      Shape s_move{std::move(s)};
+      draw(s_move);
+   }
 
-    draw(shape, mock_drawer);
-
-    REQUIRE(was_called);
+   {
+      Shape s{circle_2, [](Circle const&){}};
+      Shape s_move{std::move(s)};
+      draw(s_move);
+   }
 }
 
 int main()
 {
-   // Create a circle as one representative of a concrete shape type
-   Circle circle{ 3.14 };
-
-   // Create a drawing strategy in form of a lambda
-   auto drawer = []( Circle const& c ){ /*...*/ };
-
-   // Combine the shape and the drawing strategy in a 'Shape' abstraction
-   // This constructor call will instantiate a 'detail::OwningShapeModel' for
-   // the given 'Circle' and lambda types
-   Shape<> shape1( circle, drawer );
-
-   // Draw the shape
-   draw( shape1 );
-
-   // Create a copy of the shape by means of the copy constructor
-   Shape<> shape2( shape1 );
-
-   // Drawing the copy will result in the same output
-   draw( shape2 );
-
-   return EXIT_SUCCESS;
+   testing::InitGoogleTest();
+   return RUN_ALL_TESTS();
 }
 
